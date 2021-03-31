@@ -21,8 +21,16 @@ public class People {
         return cat;
     }
 
+    public void setCat(Cat cat) {
+        this.cat = cat;
+    }
+
     public Dog getDog() {
         return dog;
+    }
+
+    public void setDog(Dog dog) {
+        this.dog = dog;
     }
 
     public String getName() {

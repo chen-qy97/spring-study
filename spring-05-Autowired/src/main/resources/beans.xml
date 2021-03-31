@@ -9,9 +9,28 @@
        https://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/aop
        https://www.springframework.org/schema/aop/spring-aop.xsd">
-
     <!-- 开启注解支持 -->
     <context:annotation-config/>
+
+    <bean id="cat" class="com.kuang.pojo.Cat" />
+    <bean id="dog" class="com.kuang.pojo.Dog" />
+
+    <!--
+       byName: 会自动在容器上下文中查找和自己对象Set方法后面的值对应的beanid
+       byType: 会自动在容器上下文中查找和自己对象属性类型相同的bean
+   -->
+    <bean id="people" class="com.kuang.pojo.People" autowire="byName">
+        <property name="cat" ref="cat"/>
+        <!--<property name="dog" ref="dog"/>
+        <property name="name" value="狂神" />-->
+    </bean>
+
+
+    <bean id="people" class="com.kuang.pojo.People">
+        <property name="cat" ref="cat"/>
+        <property name="dog" ref="dog"/>
+        <property name="name" value="狂神" />
+     </bean>
 
     <bean id="cat111" class="com.kuang.pojo.Cat" />
     <bean id="dog111" class="com.kuang.pojo.Dog" />

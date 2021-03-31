@@ -8,7 +8,30 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 1.自动装配是Spring满足bean依赖一种方式
  * 2.Spring会在上下文中自动寻找，并自动给bean装配属性
  *
+ *在spring中有三种装配的方式：
+ * 1.在xml中显式的配置
+ * 2.在java中显式的配置
+ * 3.隐式 的自动装配bean【重要】
  *
+ *  ** ByName自动装配：
+ *  <bean id="cat" class="com.kuang.pojo.Cat" />
+ *  <bean id="dog" class="com.kuang.pojo.Dog" />
+ *  <!-- byName: 会自动在容器上下文中查找和自己对象Set方法后面的值对应的beanid -->
+ *  <bean id="people" class="com.kuang.pojo.People" autowire="byName">
+ *      <property name="name" value="狂神" />
+ *   </bean>
+ *
+ *   ** ByName自动装配：
+ *   <bean class="com.kuang.pojo.Cat" />
+ *   <bean  class="com.kuang.pojo.Dog" />
+ *   <!-- byType: 会自动在容器上下文中查找和自己对象属性类型相同的bean -->
+ *   <bean id="people" class="com.kuang.pojo.People" autowire="byType">
+ *       <property name="name" value="狂神" />
+ *   </bean>
+ *
+ *   小结：
+ *    byName: 需要保证所有bean的id唯一，并且这个bean需要和自动注入的属性的set方法的值一致
+ *    byType: 需要保证所有bean的class唯一，并且这个bean需要和自动注入的属性的类型一致
  *
  *  @Resource和@Autowired区别：
  *  都是用来自动装配的，都可以放在属性字段上
